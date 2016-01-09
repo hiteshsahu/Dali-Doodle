@@ -22,7 +22,7 @@ public class CanvasGradientEffects extends View {
 
 	private static final int DRAG_CIRCLE_RADIUS = 50;
 
-	private static final int DUMMY_CIRCLE_RADIUS = 100;
+	private static final int DUMMY_CIRCLE_RADIUS = 80;
 
 	private static final int SUM_DUMMYRADI_DRAG_RADI = DRAG_CIRCLE_RADIUS
 			+ DUMMY_CIRCLE_RADIUS;
@@ -34,10 +34,40 @@ public class CanvasGradientEffects extends View {
 	private int SCREEN_HALF_HEIGHT;
 
 	/** The Constant TAG. */
-	private static final String TAG = CanvasGradientEffects.class.getSimpleName();
+	private static final String TAG = CanvasGradientEffects.class
+			.getSimpleName();
 
 	/** The flag. */
 	boolean flag = false;
+
+	private Paint paintBoxMode;
+	private int currentPaintMode;
+	private Paint paint;
+
+	/** Paint to draw circles. */
+	private Paint mCirclePaint;
+
+	/** The stroke paint. */
+	Paint strokePaint;
+
+	/** The Constant CIRCLES_LIMIT. */
+	private static final int CIRCLES_LIMIT = 3;
+
+	/** All available circles. */
+	private HashSet<CircleArea> mCircles = new HashSet<CircleArea>(
+			CIRCLES_LIMIT);
+
+	/** The m circle pointer. */
+	private SparseArray<CircleArea> mCirclePointer = new SparseArray<CircleArea>(
+			CIRCLES_LIMIT);
+
+	/** The screen width. */
+	private int screenWidth;
+
+	/** The screen height. */
+	private int screenHeight;
+
+	private GradientBox paintBox;
 
 	/**
 	 * Stores data about single circle.
@@ -80,54 +110,27 @@ public class CanvasGradientEffects extends View {
 		}
 	}
 
-	/** Paint to draw circles. */
-	private Paint mCirclePaint;
-
-	/** The stroke paint. */
-	Paint strokePaint;
-
-	/** The Constant CIRCLES_LIMIT. */
-	private static final int CIRCLES_LIMIT = 3;
-
-	/** All available circles. */
-	private HashSet<CircleArea> mCircles = new HashSet<CircleArea>(
-			CIRCLES_LIMIT);
-
-	/** The m circle pointer. */
-	private SparseArray<CircleArea> mCirclePointer = new SparseArray<CircleArea>(
-			CIRCLES_LIMIT);
-
-	/** The screen width. */
-	private int screenWidth;
-
-	/** The screen height. */
-	private int screenHeight;
-
-	private GradientBox paintBox;
-
 	/**
 	 * Default constructor.
 	 *
-	 * @param ct
+	 * @param context
 	 *            {@link android.content.Context}
 	 */
-	public CanvasGradientEffects(final Context ct, int paintMode) {
-		super(ct);
+	public CanvasGradientEffects(final Context context, int paintMode) {
+		super(context);
 
 		this.currentPaintMode = paintMode;
-		init(ct, paintMode);
-	}
 
-	Paint paintBoxMode;
-	int currentPaintMode;
+		init(context, paintMode);
+	}
 
 	/**
 	 * Inits the.
 	 *
-	 * @param ct
+	 * @param context
 	 *            the ct
 	 */
-	private void init(final Context ct, int paintMode) {
+	private void init(final Context context, int paintMode) {
 
 		paintBox = new GradientBox();
 
@@ -202,17 +205,17 @@ public class CanvasGradientEffects extends View {
 
 				paintBoxMode = paintBox.getSimpleSweepPaint();
 				break;
-				
+
 			case 5:
 
 				paintBoxMode = paintBox.getRainBowDhader();
 				break;
-				
+
 			case 6:
 
 				paintBoxMode = paintBox.getLinearGradient(canv);
 				break;
-				
+
 			case 7:
 
 				paintBoxMode = paintBox.getBetterRadielGradient(canv);
@@ -223,56 +226,26 @@ public class CanvasGradientEffects extends View {
 			}
 		}
 
-		// // Gradient
-		// RadialGradient gradient = new RadialGradient(SCREEN_HALF_WIDTH,
-		// SCREEN_HALF_HEIGHT, SCREEN_HALF_WIDTH, 0xFFFFFFFF, 0xFF000000,
-		// android.graphics.Shader.TileMode.CLAMP);
-		// Paint p = new Paint();
-		// p.setDither(true);
-		// p.setShader(gradient);
-		// canv.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
-		// SCREEN_HALF_WIDTH, p);
-
-		// -----------------------// Radiel Gradient //-----------------------
-
-		// 2 Colors
-
-		// paintBox.getRadielGradient();
-
-		// -----------------------// Sweep Gradient //-----------------------
-
-		// paintBox.getSweepGradient();
-
-		// ---------------------ComposeShader-----------------------------------------
-
-		// paintBox.getComposeShader();
-
-		// --------------------------Linear Gradient------------
-
-		// paintBox.getLinearGradient(canv);
-
 		canv.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
 				SCREEN_HALF_WIDTH, paintBoxMode);
 
-		// Paint paint = new Paint();
-		// // Dummy circle in center of screen
-		//
-		// paint = new Paint();
-		//
-		//
-		//
-		// paint.setStyle(Paint.Style.FILL);
+		if (null == paint) {
+			paint = new Paint();
+
+		}
+
+		paint.setStyle(Paint.Style.FILL);
 		// canv.drawPaint(paint);
-		// paint.setColor(Color.parseColor("#CD5C5C"));
-		// canv.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
-		// DUMMY_CIRCLE_RADIUS, paint);
+		paint.setColor(Color.BLACK);
+		canv.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
+				DUMMY_CIRCLE_RADIUS, paint);
 		//
 		// // Background
-		// paint.setStyle(Paint.Style.STROKE);
+		paint.setStyle(Paint.Style.STROKE);
 		// canv.drawPaint(paint);
-		// paint.setColor(Color.parseColor("#50c878"));
-		// canv.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
-		// SCREEN_HALF_WIDTH, paint);
+		paint.setColor(Color.MAGENTA);
+		canv.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
+				SCREEN_HALF_WIDTH, paint);
 
 		// Drawable d =
 		// getResources().getDrawable(R.drawable.mood_wheel_black_bg);
@@ -439,7 +412,6 @@ public class CanvasGradientEffects extends View {
 					"Angle is "
 							+ getAngle(event.getX(actionIndex),
 									event.getY(actionIndex)), 500).show();
-			;
 			clearCirclePointer();
 			invalidate();
 			handled = true;
