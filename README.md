@@ -1,4 +1,4 @@
-# Dali-PaintBox
+# Dali PaintBox
 A powerful Drawing library for Android named after famous artist [Salvador Dalí !](https://en.wikipedia.org/wiki/Salvador_Dal%C3%AD)
 
 ![Alt text](https://github.com/hiteshsahu/Dali-PaintBox/blob/master/intro.jpg "Intro Screen")
