@@ -18,6 +18,8 @@ import com.serveroverload.dali.canvas.CanvasDrawElements.Mode;
 import com.serveroverload.dali.canvas.CanvasGradientEffects;
 import com.serveroverload.dali.canvas.CanvasPathEffect;
 import com.serveroverload.dali.canvas.CanvasPathEffectAdvance;
+import com.serveroverload.dali.canvas.CanvasDrawElementsAdvance;
+import com.serveroverload.dali.canvas.SpiderWave;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog.OnColorSelectedListener;
 
@@ -31,39 +33,30 @@ public class MainActivity extends Activity {
 
 		requestWindowFeature(Window.FEATURE_ACTION_BAR);
 
-		/** An array of strings to populate dropdown list */
+		
+		// Select Gradient Mode
 		final String[] gradientModes = new String[] { "BetterRadientGradient",
 				"ComposeShader", "RadielGradient", "SweepGradient",
 				"SimpleSweep", "RainBowDhader", "LinearGradient",
 				"BetterRadielGradient" };
-
-		final String[] vanvasModes = new String[] { "Text", "ComposeShader",
-				"RadielGradient", "SweepGradient", "SimpleSweep",
-				"RainBowDhader", "LinearGradient", "BetterRadielGradient" };
-
-		/** Create an array adapter to populate dropdownlist */
+		
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(
 				getBaseContext(),
 				android.R.layout.simple_spinner_dropdown_item, gradientModes);
 
-		/** Enabling dropdown list navigation for the action bar */
 		getActionBar().setNavigationMode(ActionBar.NAVIGATION_MODE_LIST);
 
-		/** Defining Navigation listener */
 		ActionBar.OnNavigationListener gradientNavigationListener = new OnNavigationListener() {
 
 			@Override
 			public boolean onNavigationItemSelected(int itemPosition,
 					long itemId) {
 				
-				setContentView(new CanvasPathEffectAdvance(MainActivity.this));
+				setContentView(new SpiderWave(MainActivity.this));
 
 //				setContentView(new CanvasGradientEffects(MainActivity.this,
 //						itemPosition));
 
-				// Toast.makeText(getBaseContext(),
-				// "You selected : " + gradientModes[itemPosition],
-				// Toast.LENGTH_SHORT).show();
 				return false;
 			}
 		};
