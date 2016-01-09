@@ -17,9 +17,7 @@ import com.serveroverload.dali.canvas.CanvasDrawElements.Drawer;
 import com.serveroverload.dali.canvas.CanvasDrawElements.Mode;
 import com.serveroverload.dali.canvas.CanvasGradientEffects;
 import com.serveroverload.dali.canvas.CanvasPathEffect;
-import com.serveroverload.dali.canvas.CanvasPathEffectAdvance;
-import com.serveroverload.dali.canvas.CanvasDrawElementsAdvance;
-import com.serveroverload.dali.canvas.SpiderWave;
+import com.serveroverload.dali.canvas.CanvasLayering;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog.OnColorSelectedListener;
 
@@ -52,7 +50,7 @@ public class MainActivity extends Activity {
 			public boolean onNavigationItemSelected(int itemPosition,
 					long itemId) {
 				
-				setContentView(new SpiderWave(MainActivity.this));
+				setContentView(new CanvasLayering(MainActivity.this));
 
 //				setContentView(new CanvasGradientEffects(MainActivity.this,
 //						itemPosition));
@@ -61,21 +59,21 @@ public class MainActivity extends Activity {
 			}
 		};
 
-		ActionBar.OnNavigationListener canvasNavigationListener = new OnNavigationListener() {
-
-			@Override
-			public boolean onNavigationItemSelected(int itemPosition,
-					long itemId) {
-
-				setContentView(new CanvasGradientEffects(MainActivity.this,
-						itemPosition));
-
-				// Toast.makeText(getBaseContext(),
-				// "You selected : " + gradientModes[itemPosition],
-				// Toast.LENGTH_SHORT).show();
-				return false;
-			}
-		};
+//		ActionBar.OnNavigationListener canvasNavigationListener = new OnNavigationListener() {
+//
+//			@Override
+//			public boolean onNavigationItemSelected(int itemPosition,
+//					long itemId) {
+//
+//				setContentView(new SampleView(MainActivity.this,
+//						itemPosition));
+//
+//				// Toast.makeText(getBaseContext(),
+//				// "You selected : " + gradientModes[itemPosition],
+//				// Toast.LENGTH_SHORT).show();
+//				return false;
+//			}
+//		};
 
 		/**
 		 * Setting dropdown items and item navigation listener for the actionbar
