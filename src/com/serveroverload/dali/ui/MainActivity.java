@@ -12,12 +12,12 @@ import android.widget.ArrayAdapter;
 import android.widget.Toast;
 
 import com.serveroverload.dali.R;
+import com.serveroverload.dali.canvas.CanvasBrushDrawing;
 import com.serveroverload.dali.canvas.CanvasDrawElements;
 import com.serveroverload.dali.canvas.CanvasDrawElements.Drawer;
 import com.serveroverload.dali.canvas.CanvasDrawElements.Mode;
 import com.serveroverload.dali.canvas.CanvasGradientEffects;
 import com.serveroverload.dali.canvas.CanvasPathEffect;
-import com.serveroverload.dali.canvas.CanvasLayering;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog.OnColorSelectedListener;
 
@@ -50,7 +50,7 @@ public class MainActivity extends Activity {
 			public boolean onNavigationItemSelected(int itemPosition,
 					long itemId) {
 				
-				setContentView(new CanvasLayering(MainActivity.this));
+				setContentView(new CanvasBrushDrawing(MainActivity.this));
 
 //				setContentView(new CanvasGradientEffects(MainActivity.this,
 //						itemPosition));
