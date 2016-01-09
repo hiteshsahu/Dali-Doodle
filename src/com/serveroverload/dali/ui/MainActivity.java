@@ -3,21 +3,27 @@ package com.serveroverload.dali.ui;
 import android.app.ActionBar;
 import android.app.ActionBar.OnNavigationListener;
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.Window;
 import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 import com.serveroverload.dali.R;
-import com.serveroverload.dali.canvas.CanvasView;
-import com.serveroverload.dali.canvas.CanvasView.Drawer;
-import com.serveroverload.dali.canvas.CanvasView.Mode;
-import com.serveroverload.dali.canvas.CircularDragCanvasView;
+import com.serveroverload.dali.canvas.CanvasDrawElements;
+import com.serveroverload.dali.canvas.CanvasDrawElements.Drawer;
+import com.serveroverload.dali.canvas.CanvasDrawElements.Mode;
+import com.serveroverload.dali.canvas.CanvasGradientEffects;
+import com.serveroverload.dali.canvas.CanvasPathEffect;
+import com.serveroverload.dali.canvas.CanvasPathEffectAdvance;
+import com.serveroverload.dali.ui.customeview.ColorPickerDialog;
+import com.serveroverload.dali.ui.customeview.ColorPickerDialog.OnColorSelectedListener;
 
 public class MainActivity extends Activity {
 
-	private CanvasView canvas = null;
+	private CanvasDrawElements canvas = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -49,9 +55,11 @@ public class MainActivity extends Activity {
 			@Override
 			public boolean onNavigationItemSelected(int itemPosition,
 					long itemId) {
+				
+				setContentView(new CanvasPathEffectAdvance(MainActivity.this));
 
-				setContentView(new CircularDragCanvasView(MainActivity.this,
-						itemPosition));
+//				setContentView(new CanvasGradientEffects(MainActivity.this,
+//						itemPosition));
 
 				// Toast.makeText(getBaseContext(),
 				// "You selected : " + gradientModes[itemPosition],
@@ -66,7 +74,7 @@ public class MainActivity extends Activity {
 			public boolean onNavigationItemSelected(int itemPosition,
 					long itemId) {
 
-				setContentView(new CircularDragCanvasView(MainActivity.this,
+				setContentView(new CanvasGradientEffects(MainActivity.this,
 						itemPosition));
 
 				// Toast.makeText(getBaseContext(),
@@ -82,7 +90,7 @@ public class MainActivity extends Activity {
 		getActionBar().setListNavigationCallbacks(adapter,
 				gradientNavigationListener);
 
-		setContentView(new CircularDragCanvasView(MainActivity.this, 0));
+		setContentView(new CanvasPathEffect(MainActivity.this));
 
 	}
 
@@ -101,43 +109,43 @@ public class MainActivity extends Activity {
 		int id = item.getItemId();
 		if (id == R.id.action_gradient) {
 
-			setContentView(new CircularDragCanvasView(MainActivity.this, 0));
+			setContentView(new CanvasGradientEffects(MainActivity.this, 0));
 
 			return true;
 		}
 
 		else if (id == R.id.action_canvas) {
 
-			CanvasView canvasView = new CanvasView(getApplicationContext());
-			
-//			//Text Mode
-//
-//			canvasView.setMode(Mode.TEXT);
-//			
-//			canvasView.setDrawer(Drawer.PEN);
-			
-			//Draw Mode Circle
+			CanvasDrawElements canvasView = new CanvasDrawElements(
+					getApplicationContext());
 
-//			canvasView.setMode(Mode.DRAW);
-//			
-//			canvasView.setDrawer(Drawer.CIRCLE);
-			
-			
-			//Draw Rectangles
+			// //Text Mode
+			//
+			// canvasView.setMode(Mode.TEXT);
+			//
+			// canvasView.setDrawer(Drawer.PEN);
+
+			// Draw Mode Circle
+
+			// canvasView.setMode(Mode.DRAW);
+			//
+			// canvasView.setDrawer(Drawer.CIRCLE);
+
+			// Draw Rectangles
 			canvasView.setMode(Mode.DRAW);
-			
+
 			canvasView.setDrawer(Drawer.RECTANGLE);
-			
-			//Draw 
-			
-//			canvasView.setMode(Mode.DRAW);
-//			
-//			canvasView.setDrawer(Drawer.ELLIPSE);
-			
-//	canvasView.setMode(Mode.DRAW);
-//			
-//			canvasView.setDrawer(Drawer.QUBIC_BEZIER);
-			
+
+			// Draw
+
+			// canvasView.setMode(Mode.DRAW);
+			//
+			// canvasView.setDrawer(Drawer.ELLIPSE);
+
+			// canvasView.setMode(Mode.DRAW);
+			//
+			// canvasView.setDrawer(Drawer.QUBIC_BEZIER);
+
 			setContentView(canvasView);
 
 			return true;
@@ -145,7 +153,30 @@ public class MainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-	public CanvasView getCanvas() {
+	public CanvasDrawElements getCanvas() {
 		return this.canvas;
+	}
+
+	private void showColorPickerDialogDemo() {
+
+		int initialColor = Color.WHITE;
+
+		ColorPickerDialog colorPickerDialog = new ColorPickerDialog(this,
+				initialColor, new OnColorSelectedListener() {
+
+					@Override
+					public void onColorSelected(int color) {
+						showToast(color);
+					}
+
+				});
+		colorPickerDialog.show();
+
+	}
+
+	private void showToast(int color) {
+		String rgbString = "R: " + Color.red(color) + " B: "
+				+ Color.blue(color) + " G: " + Color.green(color);
+		Toast.makeText(this, rgbString, Toast.LENGTH_SHORT).show();
 	}
 }

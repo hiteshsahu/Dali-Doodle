@@ -18,7 +18,7 @@ import android.widget.Toast;
 /**
  * The Class CircularDragView.
  */
-public class CircularDragCanvasView extends View {
+public class CanvasGradientEffects extends View {
 
 	private static final int DRAG_CIRCLE_RADIUS = 50;
 
@@ -34,7 +34,7 @@ public class CircularDragCanvasView extends View {
 	private int SCREEN_HALF_HEIGHT;
 
 	/** The Constant TAG. */
-	private static final String TAG = CircularDragCanvasView.class.getSimpleName();
+	private static final String TAG = CanvasGradientEffects.class.getSimpleName();
 
 	/** The flag. */
 	boolean flag = false;
@@ -111,7 +111,7 @@ public class CircularDragCanvasView extends View {
 	 * @param ct
 	 *            {@link android.content.Context}
 	 */
-	public CircularDragCanvasView(final Context ct, int paintMode) {
+	public CanvasGradientEffects(final Context ct, int paintMode) {
 		super(ct);
 
 		this.currentPaintMode = paintMode;

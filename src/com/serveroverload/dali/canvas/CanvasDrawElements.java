@@ -11,16 +11,18 @@ import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.serveroverload.dali.colorbox.ColorGenerator;
-
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Bitmap.CompressFormat;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
 import android.graphics.Color;
+import android.graphics.ComposePathEffect;
+import android.graphics.CornerPathEffect;
+import android.graphics.DashPathEffect;
 import android.graphics.Paint;
 import android.graphics.Path;
+import android.graphics.PathDashPathEffect;
 import android.graphics.PorterDuff;
 import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
@@ -31,10 +33,12 @@ import android.view.MotionEvent;
 // import android.widget.Toast;
 import android.view.View;
 
+import com.serveroverload.dali.colorbox.ColorGenerator;
+
 /**
  * This class defines fields and methods for drawing.
  */
-public class CanvasView extends View {
+public class CanvasDrawElements extends View {
 
 	ColorGenerator colorGenerator = ColorGenerator.MATERIAL;
 
@@ -89,6 +93,7 @@ public class CanvasView extends View {
 	private float startY = 0F;
 	private float controlX = 0F;
 	private float controlY = 0F;
+	private float phase = 3;
 
 	/**
 	 * Copy Constructor
@@ -97,7 +102,7 @@ public class CanvasView extends View {
 	 * @param attrs
 	 * @param defStyle
 	 */
-	public CanvasView(Context context, AttributeSet attrs, int defStyle) {
+	public CanvasDrawElements(Context context, AttributeSet attrs, int defStyle) {
 		super(context, attrs, defStyle);
 		this.setup(context);
 	}
@@ -108,7 +113,7 @@ public class CanvasView extends View {
 	 * @param context
 	 * @param attrs
 	 */
-	public CanvasView(Context context, AttributeSet attrs) {
+	public CanvasDrawElements(Context context, AttributeSet attrs) {
 		super(context, attrs);
 		this.setup(context);
 	}
@@ -118,7 +123,7 @@ public class CanvasView extends View {
 	 * 
 	 * @param context
 	 */
-	public CanvasView(Context context) {
+	public CanvasDrawElements(Context context) {
 		super(context);
 		this.setup(context);
 	}
@@ -152,7 +157,9 @@ public class CanvasView extends View {
 		paint.setStrokeWidth(this.paintStrokeWidth);
 		paint.setStrokeCap(this.lineCap);
 		paint.setStrokeJoin(Paint.Join.MITER); // fixed
-
+		
+		
+		
 		// for Text
 		if (this.mode == Mode.TEXT) {
 			paint.setTypeface(this.fontFamily);
@@ -176,6 +183,39 @@ public class CanvasView extends View {
 		}
 
 		return paint;
+	}
+	
+	
+	 private static Path makePathDash() {
+         Path p = new Path();
+         p.moveTo(-6, 4);
+         p.lineTo(6,4);
+         p.lineTo(6,3);
+         p.lineTo(-6, 3);
+         p.close();
+         p.moveTo(-6, -4);
+         p.lineTo(6,-4);
+         p.lineTo(6,-3);
+         p.lineTo(-6, -3);
+         return p;
+     }
+	
+	void setPathEffect(Paint paint)
+	{
+		
+		paint.setPathEffect(new DashPathEffect(new float[] {10,20}, 0));
+	
+		paint.setPathEffect(new CornerPathEffect(10));
+		
+		paint.setPathEffect(new DashPathEffect(new float[] {10, 5, 5, 5}, phase ));
+		
+		
+		paint.setPathEffect(new PathDashPathEffect(makePathDash(), 12, phase,
+                PathDashPathEffect.Style.MORPH));
+		
+		//paint.setPathEffect(new ComposePathEffect(e[2], e[1]));
+		
+		
 	}
 
 	/**

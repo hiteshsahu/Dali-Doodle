@@ -19,7 +19,7 @@
             android:layout_gravity="center_horizontal"
             android:background="@android:color/white">
 
-            <com.serveroverload.dali.canvas.CanvasView
+            <com.serveroverload.dali.canvas.CanvasDrawElements
                 android:id="@+id/canvas"
                 android:layout_width="280dp"
                 android:layout_height="280dp"
