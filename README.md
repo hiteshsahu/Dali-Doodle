@@ -31,6 +31,9 @@ Note to self :- //TODOs
   * Select and  Draw over images
   * Color filters
   * Convolution Matrix
+  * Mask Filter(Portr Duff)
+  * Crop and Resize
+  
   
   
 
