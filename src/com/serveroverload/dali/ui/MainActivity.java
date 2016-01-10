@@ -19,7 +19,6 @@ import com.serveroverload.dali.canvas.CanvasGradientEffects;
 import com.serveroverload.dali.canvas.CanvasPathEffect;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog.OnColorSelectedListener;
-import com.serveroverload.dali.ui.customeview.WaterWaveView;
 
 public class MainActivity extends Activity {
 

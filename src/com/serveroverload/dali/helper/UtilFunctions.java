@@ -10,7 +10,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.serveroverload.dali.R;
+import com.serveroverload.dali.ui.fragment.AboutAppFragment;
+import com.serveroverload.dali.ui.fragment.DoodleFragment;
 import com.serveroverload.dali.ui.fragment.HomeFragment;
+import com.serveroverload.dali.ui.fragment.SettingsFragment;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -23,10 +26,10 @@ public class UtilFunctions {
 
 	public static final String CHANGE_PASSWORD_TAG = "ChangePasswordFragment";
 	public static final String HOME_FRAGMENT_TAG = "HomeFragment";
-	public static final String SETTINGS_TAG = "AboutApp";
+	public static final String SETTINGS_TAG = "Settings";
 	public static final String PROFILE_TAG = "MyProfile";
 	public static final String WALLET_TAG = "Wallet";
-	public static final String OFFERS_TAG = "Offers";
+	public static final String DOODLE_FRAGMENT = "Doodle";
 	public static final String RIDE_HISTORY_TAG = "History";
 	public static final String ABOUT_APP_TAG = "About";
 	public static final String SELECT_USER_TYPE_TAG = "SelectUserType";
@@ -107,6 +110,18 @@ public class UtilFunctions {
 				if (TAG.equals(HOME_FRAGMENT_TAG)) {
 					fragmentToReplace = HomeFragment.newInstance();
 				}
+				
+				else if (TAG.equals(DOODLE_FRAGMENT)) {
+					fragmentToReplace = DoodleFragment.newInstance();
+				}
+
+				else if (TAG.equals(ABOUT_APP_TAG)) {
+					fragmentToReplace = AboutAppFragment.newInstance();
+				}
+
+				if (TAG.equals(SETTINGS_TAG)) {
+					fragmentToReplace = SettingsFragment.newInstance();
+				}
 
 			}
 			// Otherwise, we found our fragment in the manager, so we will reuse
@@ -117,14 +132,31 @@ public class UtilFunctions {
 					fragmentToReplace = (HomeFragment) fragment;
 
 				}
+				
+				else if (TAG.equals(DOODLE_FRAGMENT)) {
+					fragmentToReplace = (DoodleFragment) fragment;
+
+				}
+
+				else if (TAG.equals(ABOUT_APP_TAG)) {
+					fragmentToReplace = (AboutAppFragment) fragment;
+
+				}
+
+				else if (TAG.equals(SETTINGS_TAG)) {
+					fragmentToReplace = (SettingsFragment) fragment;
+
+				}
 
 			}
 
 			CURRENT_TAG = TAG;
 
-			// Replace our current fragment with the one we are changing to
-			transaction.replace(id, fragmentToReplace, TAG);
-			transaction.commit();
+			if (null != fragmentToReplace) {
+				// Replace our current fragment with the one we are changing to
+				transaction.replace(id, fragmentToReplace, TAG);
+				transaction.commit();
+			}
 
 		} else
 
@@ -165,8 +197,5 @@ public class UtilFunctions {
 
 		return context.getResources().getBoolean(R.bool.is_portrait);
 	}
-
-
-
 
 }

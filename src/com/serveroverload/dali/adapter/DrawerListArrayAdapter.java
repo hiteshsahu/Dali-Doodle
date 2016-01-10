@@ -39,16 +39,16 @@ public class DrawerListArrayAdapter extends ArrayAdapter<String> {
 
 	private void getTone() {
 
+		tones.add(Color.parseColor("#757575"));
 		tones.add(Color.parseColor("#616161"));
-		tones.add(Color.parseColor("#424242"));
 
+		tones.add(Color.parseColor("#757575"));
 		tones.add(Color.parseColor("#616161"));
-		tones.add(Color.parseColor("#424242"));
 
+		tones.add(Color.parseColor("#757575"));
 		tones.add(Color.parseColor("#616161"));
-		tones.add(Color.parseColor("#424242"));
 
-		tones.add(Color.parseColor("#616161"));
+		tones.add(Color.parseColor("#757575"));
 
 	}
 

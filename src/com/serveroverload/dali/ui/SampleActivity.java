@@ -80,11 +80,11 @@ public class SampleActivity extends FragmentActivity {
 				getApplicationContext()).getString(PreferenceHelper.IMAGE_URL,
 				null);
 
-//		if (null != imageUrl) {
-//			Picasso.with(getApplicationContext()).load(Uri.parse(imageUrl))
-//					.centerCrop().fit()
-//					.into((ImageView) findViewById(R.id.profile_pic));
-//		}
+		// if (null != imageUrl) {
+		// Picasso.with(getApplicationContext()).load(Uri.parse(imageUrl))
+		// .centerCrop().fit()
+		// .into((ImageView) findViewById(R.id.profile_pic));
+		// }
 
 		UtilFunctions.switchContent(R.id.frag_root,
 				UtilFunctions.HOME_FRAGMENT_TAG, SampleActivity.this,
@@ -106,7 +106,7 @@ public class SampleActivity extends FragmentActivity {
 						case 0:
 
 							UtilFunctions.switchContent(R.id.frag_root,
-									UtilFunctions.HOME_FRAGMENT_TAG,
+									UtilFunctions.DOODLE_FRAGMENT,
 									SampleActivity.this,
 									AnimationType.SLIDE_LEFT);
 							break;
@@ -127,7 +127,7 @@ public class SampleActivity extends FragmentActivity {
 						case 3:
 
 							UtilFunctions.switchContent(R.id.frag_root,
-									UtilFunctions.OFFERS_TAG,
+									UtilFunctions.DOODLE_FRAGMENT,
 									SampleActivity.this,
 									AnimationType.SLIDE_LEFT);
 							break;
