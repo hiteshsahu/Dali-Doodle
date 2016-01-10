@@ -1,37 +1,24 @@
-
-<!-- A DrawerLayout is intended to be used as the top-level content view using match_parent for both width and height to consume the full space available. -->
-<android.support.v4.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:sliding="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/drawer_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent" >
 
-    <FrameLayout
-        android:id="@+id/content_frame"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/order_root"
-        android:layout_alignParentLeft="true"
-        android:gravity="center"
-        android:text="Main Content" />
+    <!-- The navigation drawer -->
 
     <LinearLayout
-        android:id="@+id/left_drawer_root"
+        android:id="@+id/left_drawer"
         android:layout_width="220dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
-        android:background="#7986CB"
+        android:background="#424242"
         android:orientation="vertical" >
 
         <RelativeLayout
-            android:id="@+id/profile_detail"
             android:layout_width="match_parent"
             android:layout_height="180dp"
-            android:background="@drawable/ic_launcher" >
+            android:background="@drawable/material_bg" >
 
-            <com.serveroverload.dali.ui.customeview.CircleImageView
+            <com.serveroverload.customview.CircleImageView
                 android:id="@+id/profile_pic"
                 android:layout_width="100dp"
                 android:layout_height="100dp"
@@ -54,9 +41,9 @@
                 android:layout_above="@+id/email_id"
                 android:layout_margin="2dp"
                 android:layout_marginLeft="5dp"
-                android:gravity="bottom|center_horizontal"
+                android:gravity="bottom"
                 android:singleLine="true"
-                android:text="Login"
+                android:text="User Name"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
 
@@ -68,21 +55,26 @@
                 android:layout_alignParentLeft="true"
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="5dp"
-                android:gravity="bottom|center_horizontal"
                 android:singleLine="true"
-                android:text=""
+                android:text="abc@ef.com"
                 android:textColor="@color/white"
                 android:textSize="20sp" />
         </RelativeLayout>
 
         <ListView
-            android:id="@+id/left_drawer"
+            android:id="@+id/left_drawer_child"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/app_theme_color"
             android:choiceMode="singleChoice"
             android:divider="@android:color/transparent"
             android:dividerHeight="0dp" />
     </LinearLayout>
 
-</android.support.v4.widget.DrawerLayout>
+    <FrameLayout
+        android:id="@+id/frag_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toRightOf="@+id/left_drawer" >
+    </FrameLayout>
+
+</RelativeLayout>
