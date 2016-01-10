@@ -80,18 +80,31 @@ public class HomeFragment extends Fragment implements OnRefreshListener {
 				R.color.holo_green_light, R.color.holo_orange_light,
 				R.color.holo_red_light);
 
-		itemsGridView.setOnItemClickListener(new OnItemClickListener() {
+		// itemsGridView.setOnItemClickListener(new OnItemClickListener() {
+		//
+		// @Override
+		// public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
+		// long arg3) {
+		//
+		// UtilFunctions.switchContent(R.id.frag_root,
+		// UtilFunctions.DETAIL_FRAGMENT_TAG, getActivity(),
+		// AnimationType.SLIDE_DOWN);
+		//
+		// }
+		// });
 
-			@Override
-			public void onItemClick(AdapterView<?> arg0, View arg1, int arg2,
-					long arg3) {
-				//
-				// UtilFunctions.switchContent(R.id.frag_root,
-				// UtilFunctions.DETAIL_FRAGMENT_TAG, getActivity(),
-				// AnimationType.SLIDE_DOWN);
+		rootView.findViewById(R.id.add_new_doodle).setOnClickListener(
+				new OnClickListener() {
 
-			}
-		});
+					@Override
+					public void onClick(View v) {
+
+						UtilFunctions.switchContent(R.id.frag_root,
+								UtilFunctions.DOODLE_FRAGMENT, getActivity(),
+								AnimationType.SLIDE_DOWN);
+
+					}
+				});
 
 		rootView.findViewById(R.id.start_doodling).setOnClickListener(
 				new OnClickListener() {
@@ -100,8 +113,8 @@ public class HomeFragment extends Fragment implements OnRefreshListener {
 					public void onClick(View v) {
 
 						UtilFunctions.switchContent(R.id.frag_root,
-								UtilFunctions.DOODLE_FRAGMENT,
-								getActivity(), AnimationType.SLIDE_DOWN);
+								UtilFunctions.DOODLE_FRAGMENT, getActivity(),
+								AnimationType.SLIDE_DOWN);
 
 					}
 				});
@@ -134,7 +147,7 @@ public class HomeFragment extends Fragment implements OnRefreshListener {
 	 */
 	public void setUpGrid(View rootView) {
 
-		ArrayList<String> doodles = DiskUtil.getAllDoodles();
+		ArrayList<String> doodles = DiskUtil.getListOfDoodles(true);
 
 		if (!doodles.isEmpty()) {
 

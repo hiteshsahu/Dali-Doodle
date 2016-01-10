@@ -10,9 +10,21 @@ public class DiskUtil {
 
 	private final static String TAG = DiskUtil.class.getSimpleName();
 
-	public static ArrayList<String> getAllDoodles() {
+	private static ArrayList<String> imageURL = new ArrayList<String>();
 
-		ArrayList<String> imageURL = new ArrayList<String>();
+	public static ArrayList<String> getListOfDoodles(boolean forced) {
+
+		if (!forced && !imageURL.isEmpty()) {
+			return imageURL;
+		} else {
+			imageURL.clear();
+			
+			return fetchAllDoodles();
+		}
+
+	}
+
+	private static ArrayList<String> fetchAllDoodles() {
 
 		File folder = new File(getDoodleDirectory());
 

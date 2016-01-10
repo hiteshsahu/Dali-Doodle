@@ -35,6 +35,8 @@ public class SampleActivity extends FragmentActivity {
 	private DrawerArrowDrawable drawerArrow;
 	private LinearLayout mDrawerLinear;
 
+
+
 	@SuppressLint("NewApi")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -106,23 +108,23 @@ public class SampleActivity extends FragmentActivity {
 						case 0:
 
 							UtilFunctions.switchContent(R.id.frag_root,
-									UtilFunctions.DOODLE_FRAGMENT,
+									UtilFunctions.HOME_FRAGMENT_TAG,
 									SampleActivity.this,
 									AnimationType.SLIDE_LEFT);
 							break;
 						case 1:
 
 							UtilFunctions.switchContent(R.id.frag_root,
-									UtilFunctions.ESTIMATE_TAG,
+									UtilFunctions.DOODLE_FRAGMENT,
 									SampleActivity.this,
 									AnimationType.SLIDE_LEFT);
 							break;
 						case 2:
 
-							UtilFunctions.switchContent(R.id.frag_root,
-									UtilFunctions.WALLET_TAG,
-									SampleActivity.this,
-									AnimationType.SLIDE_LEFT);
+							// UtilFunctions.switchContent(R.id.frag_root,
+							// UtilFunctions.WALLET_TAG,
+							// SampleActivity.this,
+							// AnimationType.SLIDE_LEFT);
 							break;
 						case 3:
 
@@ -134,7 +136,7 @@ public class SampleActivity extends FragmentActivity {
 						case 4:
 
 							UtilFunctions.switchContent(R.id.frag_root,
-									UtilFunctions.RIDE_HISTORY_TAG,
+									UtilFunctions.EDIT_IMAGE_FRAGMENT,
 									SampleActivity.this,
 									AnimationType.SLIDE_LEFT);
 							break;

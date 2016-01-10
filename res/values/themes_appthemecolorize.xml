@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="AppThemeColorize" parent="@android:style/Theme.Translucent.NoTitleBar">
+
+    <item name="android:buttonStyle">@style/ButtonAppThemeColorize</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonAppThemeColorize</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarAppThemeColorize</item>
+
+  </style>
+
+</resources>

@@ -1,0 +1,1314 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true" >
+
+    <com.serveroverload.dali.ui.customeview.TouchImageView
+        android:id="@+id/source_image"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_centerInParent="true"
+        android:clickable="true"
+        android:contentDescription="@string/img_desc"
+        android:onClick="toggleToolbox"
+        android:scaleType="centerInside" />
+
+    <RelativeLayout
+        android:id="@+id/toolbox"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true" >
+
+        <LinearLayout
+            android:id="@+id/btn_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <ImageView
+                android:id="@+id/undo_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#BB000000"
+                android:contentDescription="@string/img_desc"
+                android:onClick="onClickUndo"
+                android:src="@drawable/ic_undo" />
+
+            <ImageView
+                android:id="@+id/save_btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="#BB000000"
+                android:contentDescription="@string/img_desc"
+                android:onClick="onClickSave"
+                android:src="@drawable/ic_save" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/effect_set_box"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/img_desc"
+                android:onClick="cancelSelectedEffect"
+                android:src="@drawable/ic_cancel" />
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:contentDescription="@string/img_desc"
+                android:onClick="setSelectedEffect"
+                android:src="@drawable/ic_accept" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_hue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/hue_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/hue"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/hue_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:mirrorForRtl="false"
+                android:progress="0"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_saturation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/sat_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/sat"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/sat_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="200"
+                android:mirrorForRtl="false"
+                android:progress="100"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_flip"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/rotate_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/rotate"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/rotate_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="360"
+                android:mirrorForRtl="false"
+                android:progress="0"
+                tools:ignore="UnusedAttribute" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/flip_v"
+                    style="@style/ButtonAppThemeColorize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onFlipV"
+                    android:text="@string/flip_v"
+                    android:textSize="18sp" />
+
+                <Button
+                    android:id="@+id/flip_h"
+                    style="@style/ButtonAppThemeColorize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onFlipH"
+                    android:text="@string/flip_h"
+                    android:textSize="18sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_boost"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/boost_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/redP"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/boost_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="150"
+                android:mirrorForRtl="false"
+                android:progress="100"
+                tools:ignore="UnusedAttribute" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="horizontal" >
+
+                <Button
+                    android:id="@+id/boost_red"
+                    style="@style/ButtonAppThemeColorize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClickBoostType"
+                    android:tag="1"
+                    android:text="@string/redL"
+                    android:textSize="18sp"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/boost_green"
+                    style="@style/ButtonAppThemeColorize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClickBoostType"
+                    android:tag="2"
+                    android:text="@string/greenL"
+                    android:textSize="18sp"
+                    android:typeface="monospace" />
+
+                <Button
+                    android:id="@+id/boost_blue"
+                    style="@style/ButtonAppThemeColorize"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:onClick="onClickBoostType"
+                    android:tag="3"
+                    android:text="@string/blueL"
+                    android:textSize="18sp"
+                    android:typeface="monospace" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_brightness"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/brightness_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/brightness"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/brightness_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="400"
+                android:mirrorForRtl="false"
+                android:progress="200"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_contrast"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/contrast_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/contrast"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/contrast_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="100"
+                android:mirrorForRtl="false"
+                android:progress="50"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_gamma"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/gRed_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/red"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/gRed_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="48"
+                android:mirrorForRtl="false"
+                android:progress="24"
+                tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/gGreen_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/green"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/gGreen_value"
+                style="@style/SeekBarAppThemeGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="48"
+                android:mirrorForRtl="false"
+                android:progress="24"
+                tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/gBlue_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/blue"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/gBlue_value"
+                style="@style/SeekBarAppThemeBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="48"
+                android:mirrorForRtl="false"
+                android:progress="24"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_cbalance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/bRed_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/redP"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/bRed_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="150"
+                android:mirrorForRtl="false"
+                android:progress="100"
+                tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/bGreen_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/greenP"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/bGreen_value"
+                style="@style/SeekBarAppThemeGreen"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="150"
+                android:mirrorForRtl="false"
+                android:progress="100"
+                tools:ignore="UnusedAttribute" />
+
+            <TextView
+                android:id="@+id/bBlue_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:layout_marginTop="10dp"
+                android:text="@string/blueP"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/bBlue_value"
+                style="@style/SeekBarAppThemeBlue"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="150"
+                android:mirrorForRtl="false"
+                android:progress="100"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_cdepth"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="20dp"
+            android:visibility="gone" >
+
+            <TextView
+                android:id="@+id/cdepth_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="5dp"
+                android:text="@string/cdepth"
+                android:textSize="18sp" />
+
+            <SeekBar
+                android:id="@+id/cdepth_value"
+                style="@style/SeekBarAppThemeColorize"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:max="3"
+                android:mirrorForRtl="false"
+                android:progress="1"
+                tools:ignore="UnusedAttribute" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/holder_tint"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:background="#BB000000"
+            android:clickable="true"
+            android:orientation="horizontal"
+            android:paddingTop="3dp"
+            android:visibility="gone" >
+
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="70dp"
+                android:scrollbars="none"
+                tools:ignore="UselessParent" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
+
+                    <!-- GREEN -->
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#1E8D24"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF1E8D24" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#374D1F"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF374D1F" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#04A639"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF04A639" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#A0D722"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFA0D722" />
+
+                    <!-- RED -->
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#C41430"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFC41430" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#FF0000"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFFF0000" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#FF3300"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFFF3300" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#AD343A"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFAD343A" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#7B2A26"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF7B2A26" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#9B162F"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF9B162F" />
+
+                    <!-- PURPLE -->
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#FF29E8"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFFF29E8" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#862B73"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF862B73" />
+
+                    <!-- BLUE -->
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#01A6A8"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF01A6A8" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#147C87"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF147C87" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#3C4056"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF3C4056" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#0120C1"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF0120C1" />
+
+                    <!-- OTHER -->
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#F3C538"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFF3C538" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#0A1D19"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FF0A1D19" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#F27B35"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFF27B35" />
+
+                    <View
+                        android:layout_width="70dp"
+                        android:layout_height="70dp"
+                        android:background="#F2B885"
+                        android:clickable="true"
+                        android:onClick="applyTint"
+                        android:tag="#FFF2B885" />
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/effects_holder"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:background="#99000000"
+            android:clickable="true"
+            android:paddingTop="3dp" >
+
+            <HorizontalScrollView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:scrollbars="none"
+                tools:ignore="UselessParent" >
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal" >
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="boost" >
+
+                        <ImageView
+                            android:id="@+id/effect_img14"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_boost" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img14"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect14"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="brightness" >
+
+                        <ImageView
+                            android:id="@+id/effect_img1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_brightness" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img1"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect1"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="cdepth" >
+
+                        <ImageView
+                            android:id="@+id/effect_img12"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_colordepth" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img12"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect12"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="cbalance" >
+
+                        <ImageView
+                            android:id="@+id/effect_img11"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_colorbalance" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img11"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect11"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="contrast" >
+
+                        <ImageView
+                            android:id="@+id/effect_img19"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_contrast" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img19"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect19"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="emboss" >
+
+                        <ImageView
+                            android:id="@+id/effect_img13"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_emboss" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img13"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect13"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="flip" >
+
+                        <ImageView
+                            android:id="@+id/effect_img2"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_flip" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img2"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect2"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="gamma" >
+
+                        <ImageView
+                            android:id="@+id/effect_img5"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_gamma" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img5"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect5"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="gaussian" >
+
+                        <ImageView
+                            android:id="@+id/effect_img10"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_gaussian" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img10"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect10"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="grayscale" >
+
+                        <ImageView
+                            android:id="@+id/effect_img7"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_grayscale" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img7"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect7"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="hue" >
+
+                        <ImageView
+                            android:id="@+id/effect_img3"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_hue" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img3"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect3"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="invert" >
+
+                        <ImageView
+                            android:id="@+id/effect_img6"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_invert" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img6"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect6"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="noise" >
+
+                        <ImageView
+                            android:id="@+id/effect_img15"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_noise" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img15"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect15"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="saturation" >
+
+                        <ImageView
+                            android:id="@+id/effect_img18"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_saturation" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img18"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect18"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="sepia" >
+
+                        <ImageView
+                            android:id="@+id/effect_img8"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_sepia" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img8"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect8"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="sharpen" >
+
+                        <ImageView
+                            android:id="@+id/effect_img9"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_sharpen" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img9"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect9"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="sketch" >
+
+                        <ImageView
+                            android:id="@+id/effect_img16"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_sketch" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img16"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect16"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="5dp"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="tint" >
+
+                        <ImageView
+                            android:id="@+id/effect_img4"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_tint" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img4"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect4"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+
+                    <RelativeLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:onClick="onClickEffectButton"
+                        android:tag="vignette" >
+
+                        <ImageView
+                            android:id="@+id/effect_img17"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_centerHorizontal="true"
+                            android:contentDescription="@string/img_desc"
+                            android:src="@drawable/ic_effect_vignette" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_below="@+id/effect_img17"
+                            android:layout_centerHorizontal="true"
+                            android:gravity="center"
+                            android:paddingBottom="5dp"
+                            android:paddingLeft="5dp"
+                            android:paddingRight="5dp"
+                            android:singleLine="true"
+                            android:text="@string/effect17"
+                            android:textColor="#ffffff"
+                            android:textSize="16sp" />
+                    </RelativeLayout>
+                </LinearLayout>
+            </HorizontalScrollView>
+        </LinearLayout>
+    </RelativeLayout>
+
+</FrameLayout>

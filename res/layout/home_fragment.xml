@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
+    android:background="#E0E0E0"
     android:orientation="vertical" >
 
     <android.support.v4.widget.SwipeRefreshLayout
@@ -24,13 +24,13 @@
             android:divider="@android:color/transparent"
             android:dividerHeight="10.0sp"
             android:horizontalSpacing="2dp"
-            android:numColumns="3"
+            android:numColumns="auto_fit"
             android:stretchMode="columnWidth"
             android:verticalSpacing="2dp" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
     <com.melnykov.fab.FloatingActionButton
-        android:id="@+id/add_new_address"
+        android:id="@+id/add_new_doodle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"

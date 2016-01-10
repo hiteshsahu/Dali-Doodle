@@ -10,8 +10,10 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 
 import com.serveroverload.dali.R;
+import com.serveroverload.dali.ui.ImageEditor;
 import com.serveroverload.dali.ui.fragment.AboutAppFragment;
 import com.serveroverload.dali.ui.fragment.DoodleFragment;
+import com.serveroverload.dali.ui.fragment.FullScreenPagerFragment;
 import com.serveroverload.dali.ui.fragment.HomeFragment;
 import com.serveroverload.dali.ui.fragment.SettingsFragment;
 
@@ -28,9 +30,9 @@ public class UtilFunctions {
 	public static final String HOME_FRAGMENT_TAG = "HomeFragment";
 	public static final String SETTINGS_TAG = "Settings";
 	public static final String PROFILE_TAG = "MyProfile";
-	public static final String WALLET_TAG = "Wallet";
+	// public static final String DETAIL_FRAGMENT_TAG = "DoodleDetail";
 	public static final String DOODLE_FRAGMENT = "Doodle";
-	public static final String RIDE_HISTORY_TAG = "History";
+	public static final String EDIT_IMAGE_FRAGMENT = "EditImage";
 	public static final String ABOUT_APP_TAG = "About";
 	public static final String SELECT_USER_TYPE_TAG = "SelectUserType";
 	/** The Constant IS_ISC. */
@@ -110,10 +112,16 @@ public class UtilFunctions {
 				if (TAG.equals(HOME_FRAGMENT_TAG)) {
 					fragmentToReplace = HomeFragment.newInstance();
 				}
-				
+
 				else if (TAG.equals(DOODLE_FRAGMENT)) {
 					fragmentToReplace = DoodleFragment.newInstance();
 				}
+				
+
+				else if (TAG.equals(EDIT_IMAGE_FRAGMENT)) {
+					fragmentToReplace = ImageEditor.newInstance();
+				}
+
 
 				else if (TAG.equals(ABOUT_APP_TAG)) {
 					fragmentToReplace = AboutAppFragment.newInstance();
@@ -132,9 +140,14 @@ public class UtilFunctions {
 					fragmentToReplace = (HomeFragment) fragment;
 
 				}
-				
+
 				else if (TAG.equals(DOODLE_FRAGMENT)) {
 					fragmentToReplace = (DoodleFragment) fragment;
+
+				}
+				
+				else if (TAG.equals(EDIT_IMAGE_FRAGMENT)) {
+					fragmentToReplace = (ImageEditor) fragment;
 
 				}
 
@@ -163,6 +176,73 @@ public class UtilFunctions {
 		{
 			// Do nothing since we are already on the fragment being changed to
 		}
+	}
+
+	public static void switchFragmentWithAnimation(int id, Fragment fragment,
+			FragmentActivity activity, String TAG, AnimationType transitionStyle) {
+
+		FragmentManager fragmentManager = activity.getSupportFragmentManager();
+		FragmentTransaction fragmentTransaction = fragmentManager
+				.beginTransaction();
+
+		if (transitionStyle != null) {
+			switch (transitionStyle) {
+			case SLIDE_DOWN:
+
+				// Exit from down
+				fragmentTransaction.setCustomAnimations(R.anim.slide_up,
+						R.anim.slide_down);
+
+				break;
+
+			case SLIDE_UP:
+
+				// Enter from Up
+				fragmentTransaction.setCustomAnimations(R.anim.slide_in_up,
+						R.anim.slide_out_up);
+
+				break;
+
+			case SLIDE_LEFT:
+
+				// Enter from left
+				fragmentTransaction.setCustomAnimations(R.anim.slide_left,
+						R.anim.slide_out_left);
+
+				break;
+
+			// Enter from right
+			case SLIDE_RIGHT:
+				fragmentTransaction.setCustomAnimations(R.anim.slide_right,
+						R.anim.slide_out_right);
+
+				break;
+
+			case FADE_IN:
+				fragmentTransaction.setCustomAnimations(R.anim.fade_in,
+						R.anim.fade_out);
+
+			case FADE_OUT:
+				fragmentTransaction.setCustomAnimations(R.anim.fade_in,
+						R.anim.donot_move);
+
+				break;
+
+			case SLIDE_IN_SLIDE_OUT:
+
+				fragmentTransaction.setCustomAnimations(R.anim.slide_left,
+						R.anim.slide_out_left);
+
+				break;
+
+			default:
+				break;
+			}
+		}
+
+		fragmentTransaction.replace(id, fragment);
+		fragmentTransaction.addToBackStack(TAG);
+		fragmentTransaction.commit();
 	}
 
 	/**

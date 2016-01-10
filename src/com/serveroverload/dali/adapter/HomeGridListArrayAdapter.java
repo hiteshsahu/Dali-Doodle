@@ -19,6 +19,7 @@ import com.serveroverload.dali.R;
 import com.serveroverload.dali.helper.UtilFunctions;
 import com.serveroverload.dali.helper.UtilFunctions.AnimationType;
 import com.serveroverload.dali.ui.SampleActivity;
+import com.serveroverload.dali.ui.fragment.FullScreenPagerFragment;
 
 // TODO: Auto-generated Javadoc
 /**
@@ -101,7 +102,7 @@ public class HomeGridListArrayAdapter extends ArrayAdapter<String>
 			// .findViewById(R.id.swipe_layout_1);
 
 			holder.rootbackGround = (ImageView) convertView
-					.findViewById(R.id.top_view);
+					.findViewById(R.id.imageView);
 
 			// holder.currentSwipeLayout.setShowMode(SwipeLayout.ShowMode.LayDown);
 			//
@@ -132,17 +133,17 @@ public class HomeGridListArrayAdapter extends ArrayAdapter<String>
 
 		Glide.with(context)
 				.load((new File(listOfProductsCategory.get(position))))
-				.centerCrop().into(holder.rootbackGround);
+				.crossFade().into(holder.rootbackGround);
 
 		convertView.setOnClickListener(new OnClickListener() {
 
 			@Override
 			public void onClick(View v) {
 
-				// UtilFunctions.switchFragmentWithAnimation(R.id.frag_root,
-				// FullScreenPagerFragment.newInstance(position),
-				// (SampleActivity) getContext(),
-				// "FullScreenPagerFragment", AnimationType.SLIDE_RIGHT);
+				UtilFunctions.switchFragmentWithAnimation(R.id.frag_root,
+						FullScreenPagerFragment.newInstance(position),
+						(SampleActivity) getContext(),
+						"FullScreenPagerFragment", AnimationType.SLIDE_RIGHT);
 
 			}
 		});
