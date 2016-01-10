@@ -212,7 +212,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toLeftOf="@+id/checkbox_earphone_plug"
-                android:text="melnykov fab"
+                android:text="melnykov fab https://github.com/makovkastar/FloatingActionButton"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="italic" />
@@ -260,7 +260,7 @@
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="5dp"
                 android:layout_toLeftOf="@+id/checkbox_earphone_plug"
-                android:text="Uses ActionBar Drawer"
+                android:text="Uses ActionBar Drawer https://github.com/keklikhasan/LDrawer"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="italic" />
