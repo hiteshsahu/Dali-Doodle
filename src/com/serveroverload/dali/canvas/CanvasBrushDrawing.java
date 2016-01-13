@@ -56,6 +56,8 @@ public class CanvasBrushDrawing extends View {
         case MotionEvent.ACTION_MOVE:
             final float posX = event.getX();
             final float posY = event.getY();
+            
+            mPositions.clear();
             mPositions.add(new Vector2(posX - mBitmapBrushDimensions.x / 2, posY - mBitmapBrushDimensions.y / 2));
             invalidate();
         }

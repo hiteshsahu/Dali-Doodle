@@ -25,7 +25,7 @@
             android:id="@+id/rl_song_control_overview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/orange"
+            android:background="@color/black"
             android:gravity="center"
             android:orientation="vertical" >
 
@@ -42,10 +42,11 @@
                 android:orientation="horizontal" >
 
                 <ImageView
-                    android:id="@+id/imageViewAlbumArt"
+                    android:id="@+id/iv_current_paint_mode"
                     android:layout_width="50dp"
                     android:layout_height="50dp"
-                    android:layout_gravity="center_vertical" />
+                    android:layout_gravity="center_vertical"
+                    android:background="@drawable/ic_effects" />
 
                 <LinearLayout
                     android:layout_width="fill_parent"
@@ -61,7 +62,7 @@
                         android:gravity="center_horizontal"
                         android:marqueeRepeatLimit="marquee_forever"
                         android:singleLine="true"
-                        android:text="Blah"
+                        android:text="Controls"
                         android:textColor="@color/white"
                         android:textSize="15sp" />
 
@@ -71,60 +72,60 @@
                         android:gravity="center_horizontal"
                         android:orientation="horizontal" >
 
-                        <Button
-                            android:id="@+id/btnPrevious"
+                        <com.serveroverload.dali.ui.customeview.TextAwesome
+                            android:id="@+id/btn_undo"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/ic_launcher" />
+                            android:text="@string/fa_reply"
+                            android:textColor="@color/white"
+                            android:textSize="28sp" />
 
-                        <Button
-                            android:id="@+id/btnPlay"
+                        <com.serveroverload.dali.ui.customeview.TextAwesome
+                            android:id="@+id/btn_clear"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/ic_launcher"
-                            android:visibility="gone" />
+                            android:text="@string/fa_recycle"
+                            android:textColor="@color/white"
+                            android:textSize="28sp" />
 
-                        <Button
-                            android:id="@+id/btnPause"
+                        <com.serveroverload.dali.ui.customeview.TextAwesome
+                            android:id="@+id/btn_redo"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/ic_launcher" />
+                            android:text="@string/fa_mail_forward"
+                            android:textColor="@color/white"
+                            android:textSize="28sp" />
 
-                        <Button
-                            android:id="@+id/btnStop"
+                        <com.serveroverload.dali.ui.customeview.TextAwesome
+                            android:id="@+id/btn_color"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/ic_launcher" />
+                            android:text="@string/fa_flask"
+                            android:textColor="@color/red_app_theme"
+                            android:textSize="28sp" />
 
-                        <Button
-                            android:id="@+id/btnNext"
+                        <com.serveroverload.dali.ui.customeview.TextAwesome
+                            android:id="@+id/btn_crop"
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:layout_gravity="center_vertical"
                             android:layout_marginLeft="10dp"
                             android:layout_marginRight="10dp"
-                            android:background="@drawable/ic_launcher" />
-
-                        <Button
-                            android:id="@+id/btnMusicPlayer"
-                            android:layout_width="28dp"
-                            android:layout_height="28dp"
-                            android:layout_gravity="center_vertical"
-                            android:layout_marginLeft="10dp"
-                            android:layout_marginRight="10dp"
-                            android:background="@drawable/ic_launcher" />
+                            android:text="@string/fa_crop"
+                            android:textColor="@color/white"
+                            android:textSize="28sp" />
                     </LinearLayout>
 
                     <LinearLayout
@@ -139,24 +140,28 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
+                            android:text="0"
                             android:textColor="@color/white" />
-
-                        <TextView
-                            android:id="@+id/textDuration"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="right"
-                            android:textColor="@color/white" />
-                    </LinearLayout>
-
-                    <SeekBar
-                        android:id="@+id/progressBar"
+                        
+                         <SeekBar
+                        android:id="@+id/progress_paint_size"
                         style="?android:attr/progressBarStyleHorizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginBottom="1dp"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp" />
+
+                        <TextView
+                            android:id="@+id/textDuration"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="right"
+                            android:text="100"
+                            android:textColor="@color/white" />
+                    </LinearLayout>
+
+                   
                 </LinearLayout>
             </LinearLayout>
 
@@ -168,16 +173,26 @@
                 android:gravity="center"
                 android:orientation="vertical" >
 
-                <android.support.v4.view.ViewPager
+                <!--
+                     <android.support.v4.view.ViewPager
                     xmlns:android="http://schemas.android.com/apk/res/android"
                     xmlns:app="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/container"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_above="@+id/slider_controls" />
+                -->
+
+                <include
+                    android:id="@+id/controls"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_above="@+id/slider_controls"
+                    android:layout_alignParentBottom="true"
+                    layout="@layout/paint_controls" />
 
                 <LinearLayout
-                    android:id="@id/slider_controls"
+                    android:id="@+id/slider_controls"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_alignParentBottom="true"
@@ -185,7 +200,8 @@
                     android:layout_marginTop="5dp"
                     android:background="@color/orange"
                     android:gravity="center"
-                    android:orientation="horizontal" >
+                    android:orientation="horizontal"
+                    android:visibility="gone" >
 
                     <Button
                         android:id="@+id/btnRepeatSlider"

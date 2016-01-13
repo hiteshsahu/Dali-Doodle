@@ -71,5 +71,7 @@
     <color name="accent_pressed">#C2185B</color>
     
       <color name="material_blue_500">#5677fc</color>
+      
+          <color name="translucent_black">#80000000</color>
 
 </resources>

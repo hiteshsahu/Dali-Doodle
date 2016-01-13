@@ -132,7 +132,7 @@ public class HomeGridListArrayAdapter extends ArrayAdapter<String>
 		});
 
 		Glide.with(context)
-				.load((new File(listOfProductsCategory.get(position))))
+				.load(listOfProductsCategory.get(position))
 				.crossFade().into(holder.rootbackGround);
 
 		convertView.setOnClickListener(new OnClickListener() {

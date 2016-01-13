@@ -29,13 +29,15 @@
             android:verticalSpacing="2dp" />
     </android.support.v4.widget.SwipeRefreshLayout>
 
-    <com.melnykov.fab.FloatingActionButton
+    <!--
+         <com.melnykov.fab.FloatingActionButton
         android:id="@+id/add_new_doodle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|right"
         android:layout_margin="16dp"
         android:src="@drawable/add_doodle" />
+    -->
 
     <FrameLayout
         android:id="@+id/default_nodata"
@@ -111,13 +113,56 @@
         </LinearLayout>
     </FrameLayout>
 
+    <com.github.clans.fab.FloatingActionMenu
+        android:id="@+id/menu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="10dp"
+        fab:menu_animationDelayPerItem="0"
+        fab:menu_colorNormal="#FFB805"
+        fab:menu_colorPressed="#F2AB00"
+        fab:menu_colorRipple="#D99200"
+        fab:menu_labels_hideAnimation="@anim/jump_to_down"
+        fab:menu_labels_showAnimation="@anim/jump_from_down"
+        fab:menu_labels_style="@style/MenuLabelsStyle"
+        fab:menu_shadowColor="#444" >
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/add_new_doodle"
+            style="@style/MenuButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/draw"
+            fab:fab_label="Draw" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/capture"
+            style="@style/MenuButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/cam"
+            fab:fab_label="Capture" />
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/pick"
+            style="@style/MenuButtonsStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/pick"
+            fab:fab_label="Pick" />
+    </com.github.clans.fab.FloatingActionMenu>
+
     <com.serveroverload.dali.ui.customeview.AVLoadingIndicatorView
         android:id="@+id/loading_bar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        app:indicator="Pacman"
+        app:indicator="CubeTransition"
+        android:visibility="invisible"
         app:indicator_color="#F53700" />
 
 </FrameLayout>

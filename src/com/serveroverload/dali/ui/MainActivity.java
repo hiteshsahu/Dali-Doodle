@@ -1,17 +1,7 @@
 package com.serveroverload.dali.ui;
 
-import android.app.ActionBar;
-import android.app.ActionBar.OnNavigationListener;
-import android.app.Activity;
-import android.graphics.Color;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.Window;
-import android.widget.ArrayAdapter;
-import android.widget.Toast;
-
 import com.serveroverload.dali.R;
+import com.serveroverload.dali.canvas.CanvasBrushDrawing;
 import com.serveroverload.dali.canvas.CanvasDrawElements;
 import com.serveroverload.dali.canvas.CanvasDrawElements.Drawer;
 import com.serveroverload.dali.canvas.CanvasDrawElements.Mode;
@@ -19,11 +9,25 @@ import com.serveroverload.dali.canvas.CanvasGradientEffects;
 import com.serveroverload.dali.canvas.CanvasPathEffect;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog;
 import com.serveroverload.dali.ui.customeview.ColorPickerDialog.OnColorSelectedListener;
+import android.annotation.TargetApi;
+import android.app.ActionBar;
+import android.app.ActionBar.OnNavigationListener;
+import android.app.Activity;
+import android.graphics.Color;
+import android.os.Build;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.Window;
+import android.widget.ArrayAdapter;
+import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
 	private CanvasDrawElements canvas = null;
 
+	@TargetApi(Build.VERSION_CODES.HONEYCOMB)
+	@SuppressWarnings("deprecation")
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -51,8 +55,7 @@ public class MainActivity extends Activity {
 				
 			//	setContentView(new WaterWaveView(MainActivity.this));
 
-				setContentView(new CanvasGradientEffects(MainActivity.this,
-						itemPosition));
+				setContentView(new CanvasBrushDrawing(MainActivity.this));
 
 				return false;
 			}

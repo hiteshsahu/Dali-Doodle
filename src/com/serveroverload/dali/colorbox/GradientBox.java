@@ -29,13 +29,101 @@ public class GradientBox {
 	/** The screen height. */
 	private int screenHeight;
 
+	int shaderColor0 = Color.RED;
+	int shaderColor1 = Color.BLUE;
+
+	public static final int RADIEL_GRADIENT = 0;
+	public static final int LINER_GRADIENT = 1;
+	public static final int SWEEP_GRADIENT = 2;
+	public static final int COMPOSE_GRADIENT = 4;
+
+	public Paint getShader(int gradientType, Paint paint) {
+
+		switch (gradientType) {
+		case RADIEL_GRADIENT:
+
+			RadialGradient gradient = new RadialGradient(SCREEN_HALF_WIDTH,
+					SCREEN_HALF_HEIGHT, SCREEN_HALF_WIDTH, 0xFFFFFFFF,
+					0xFF000000, android.graphics.Shader.TileMode.REPEAT);
+			paint.setDither(true);
+			paint.setShader(gradient);
+
+			return paint;
+
+		case LINER_GRADIENT:
+
+			paint.setAntiAlias(true);
+			Shader linearGradientShader;
+
+			linearGradientShader = new LinearGradient(0, 0, screenWidth,
+					screenHeight, shaderColor1, shaderColor0,
+					Shader.TileMode.MIRROR);
+
+			paint.setShader(linearGradientShader);
+
+			linearGradientShader = new LinearGradient(SCREEN_HALF_WIDTH,
+					SCREEN_HALF_HEIGHT, SCREEN_HALF_WIDTH + SCREEN_HALF_WIDTH
+							/ 4, SCREEN_HALF_HEIGHT + SCREEN_HALF_HEIGHT / 4,
+					shaderColor0, shaderColor1, Shader.TileMode.MIRROR);
+
+			paint.setShader(linearGradientShader);
+
+			return paint;
+
+		case SWEEP_GRADIENT:
+
+			paint.setAntiAlias(true);
+			paint.setShader(new SweepGradient(SCREEN_HALF_WIDTH,
+					SCREEN_HALF_HEIGHT, shaderColor0, shaderColor1));
+
+			return paint;
+
+		case COMPOSE_GRADIENT:
+
+			RadialGradient radial_gradient = new RadialGradient(
+					SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT, SCREEN_HALF_WIDTH,
+					0xFFFFFFFF, 0x00FFFFFF,
+					android.graphics.Shader.TileMode.CLAMP);
+
+			int morecolors[] = new int[13];
+			float hsv[] = new float[3];
+			hsv[1] = 1;
+			hsv[2] = 1;
+			for (int i = 0; i < 12; i++) {
+				hsv[0] = (360 / 12) * i;
+				morecolors[i] = Color.HSVToColor(hsv);
+			}
+			morecolors[12] = morecolors[0];
+
+			SweepGradient sweep_gradient = new SweepGradient(SCREEN_HALF_WIDTH,
+					SCREEN_HALF_HEIGHT, morecolors, null);
+
+			ComposeShader shader = new ComposeShader(sweep_gradient,
+					radial_gradient, PorterDuff.Mode.SRC_OVER);
+
+			paint.setDither(true);
+			paint.setShader(shader);
+
+			return paint;
+
+		default:
+			break;
+		}
+		return paint;
+
+	}
+
 	/**
 	 * Inits the paint box.
 	 *
-	 * @param screenWidth the screen width
-	 * @param screenHeight the screen height
-	 * @param SCREEN_HALF_WIDTH the screen half width
-	 * @param SCREEN_HALF_HEIGHT the screen half height
+	 * @param screenWidth
+	 *            the screen width
+	 * @param screenHeight
+	 *            the screen height
+	 * @param SCREEN_HALF_WIDTH
+	 *            the screen half width
+	 * @param SCREEN_HALF_HEIGHT
+	 *            the screen half height
 	 */
 	public void initPaintBox(int screenWidth, int screenHeight,
 			int SCREEN_HALF_WIDTH, int SCREEN_HALF_HEIGHT) {
@@ -148,7 +236,8 @@ public class GradientBox {
 	/**
 	 * Gets the linear gradient.
 	 *
-	 * @param canv the canv
+	 * @param canv
+	 *            the canv
 	 * @return the linear gradient
 	 */
 	public Paint getLinearGradient(final Canvas canv) {
@@ -187,8 +276,10 @@ public class GradientBox {
 	/**
 	 * Draw text with sadow.
 	 *
-	 * @param canvas the canvas
-	 * @param icon the icon
+	 * @param canvas
+	 *            the canvas
+	 * @param icon
+	 *            the icon
 	 */
 	public void drawTextWithSadow(Canvas canvas, Bitmap icon) {
 		Paint shadowPaint = new Paint();
@@ -231,7 +322,8 @@ public class GradientBox {
 	/**
 	 * Gets the better radiel gradient.
 	 *
-	 * @param canvas the canvas
+	 * @param canvas
+	 *            the canvas
 	 * @return the better radiel gradient
 	 */
 	public Paint getBetterRadielGradient(Canvas canvas) {
@@ -270,9 +362,9 @@ public class GradientBox {
 				Shader.TileMode.MIRROR);
 
 		MyPaint.setShader(radialGradientShader);
-//		canvas.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
-//				SCREEN_HALF_WIDTH, MyPaint);
-		
+		// canvas.drawCircle(SCREEN_HALF_WIDTH, SCREEN_HALF_HEIGHT,
+		// SCREEN_HALF_WIDTH, MyPaint);
+
 		return MyPaint;
 
 	}

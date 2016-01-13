@@ -4,8 +4,12 @@
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.LIBRARIES"/>
 	<classpathentry exported="true" kind="con" path="com.android.ide.eclipse.adt.DEPENDENCIES"/>
 	<classpathentry kind="src" path="/android-support-v7-appcompat"/>
+	<classpathentry kind="lib" path="libs/android-support-v4.jar"/>
+	<classpathentry kind="lib" path="libs/glide-3.6.1 (1).jar"/>
+	<classpathentry kind="lib" path="libs/metadata-extractor-2.8.1.jar"/>
+	<classpathentry kind="lib" path="libs/nineoldandroids-2.4.0.jar"/>
+	<classpathentry kind="lib" path="libs/xmpcore-5.1.2.jar"/>
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="gen"/>
-	<classpathentry exported="true" kind="lib" path="C:/Users/Hitesh/Documents/GitHub/Dali-PaintBox/libs/android-support-v4.jar"/>
 	<classpathentry kind="output" path="bin/classes"/>
 </classpath>

@@ -12,7 +12,7 @@
         android:layout_marginLeft="10dp"
         android:orientation="vertical" >
 
-        <LinearLayout
+       <LinearLayout
             android:id="@+id/ll_app_version"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -26,25 +26,25 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="20dp"
-                android:text="Address"
+                android:text="App version"
                 android:textColor="@color/white"
                 android:textSize="20sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:id="@+id/login"
+                android:id="@+id/app_version_code"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="10dp"
                 android:layout_marginTop="3dp"
-                android:text="Some Address"
+                android:text="0.0"
                 android:textColor="@color/white"
                 android:textSize="15sp"
                 android:textStyle="italic" />
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/email"
+            android:id="@+id/site"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
@@ -73,7 +73,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:id="@+id/site_pathmeda"
+            android:id="@+id/mail_dev"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"

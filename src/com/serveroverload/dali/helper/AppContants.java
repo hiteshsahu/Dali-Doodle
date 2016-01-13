@@ -16,4 +16,6 @@ public class AppContants {
 
 	public static final int REQUEST_CAMERA = 0;
 	public static final int REQUEST_GALLERY = 1;
+
+	public static final String EXTRA_KEY_IMAGE_URL = "imageURL";
 }

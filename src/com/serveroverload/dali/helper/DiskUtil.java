@@ -3,6 +3,7 @@ package com.serveroverload.dali.helper;
 import java.io.File;
 import java.util.ArrayList;
 
+import android.net.Uri;
 import android.os.Environment;
 import android.util.Log;
 
@@ -35,7 +36,7 @@ public class DiskUtil {
 			for (int i = 0; i < listOfFiles.length; i++) {
 				if (listOfFiles[i].isFile()) {
 
-					imageURL.add(listOfFiles[i].getAbsolutePath());
+					imageURL.add(Uri.fromFile(listOfFiles[i]).toString());
 
 					Log.d(TAG, "File " + listOfFiles[i].getName());
 
@@ -49,7 +50,7 @@ public class DiskUtil {
 		return imageURL;
 	}
 
-	private static String getDoodleDirectory() {
+	public static String getDoodleDirectory() {
 
 		return createDirIfNotExists().getAbsolutePath();
 	}

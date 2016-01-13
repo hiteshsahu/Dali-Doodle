@@ -17,7 +17,7 @@
         android:layout_gravity="bottom|center_horizontal"
         android:background="#70000000"
         android:orientation="horizontal"
-        android:weightSum="4" >
+        android:weightSum="5" >
 
         <com.serveroverload.dali.ui.customeview.TextAwesome
             android:id="@+id/canvas"
@@ -26,7 +26,6 @@
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="?android:attr/activatedBackgroundIndicator"
             android:focusable="false"
             android:gravity="center"
             android:paddingLeft="5dp"
@@ -41,7 +40,6 @@
             android:layout_alignParentLeft="true"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="?android:attr/activatedBackgroundIndicator"
             android:focusable="false"
             android:gravity="center"
             android:paddingLeft="5dp"
@@ -56,7 +54,6 @@
             android:layout_alignParentLeft="true"
             android:layout_gravity="center_vertical"
             android:layout_weight="1"
-            android:background="?android:attr/activatedBackgroundIndicator"
             android:focusable="false"
             android:gravity="center"
             android:paddingLeft="5dp"
@@ -71,11 +68,24 @@
             android:layout_alignParentLeft="true"
             android:layout_gravity="center"
             android:layout_weight="1"
-            android:background="?android:attr/activatedBackgroundIndicator"
             android:focusable="false"
             android:gravity="center"
             android:paddingLeft="5dp"
             android:text="@string/fa_share_alt"
+            android:textColor="@color/white"
+            android:textSize="25sp" />
+
+        <com.serveroverload.dali.ui.customeview.TextAwesome
+            android:id="@+id/delete"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:focusable="false"
+            android:gravity="center"
+            android:paddingLeft="5dp"
+            android:text="@string/fa_trash"
             android:textColor="@color/white"
             android:textSize="25sp" />
     </LinearLayout>

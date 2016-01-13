@@ -61,6 +61,7 @@
             android:visibility="gone" >
 
             <ImageView
+                android:id="@+id/cancelSelectedEffect"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/img_desc"
@@ -68,6 +69,7 @@
                 android:src="@drawable/ic_cancel" />
 
             <ImageView
+                android:id="@+id/ic_accept"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:contentDescription="@string/img_desc"
@@ -527,6 +529,7 @@
                     <!-- GREEN -->
 
                     <View
+                        android:id="@+id/tint_shade_1"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#1E8D24"
@@ -535,6 +538,7 @@
                         android:tag="#FF1E8D24" />
 
                     <View
+                        android:id="@+id/tint_shade_2"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#374D1F"
@@ -543,6 +547,7 @@
                         android:tag="#FF374D1F" />
 
                     <View
+                        android:id="@+id/tint_shade_3"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#04A639"
@@ -551,6 +556,7 @@
                         android:tag="#FF04A639" />
 
                     <View
+                        android:id="@+id/tint_shade_4"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#A0D722"
@@ -561,6 +567,7 @@
                     <!-- RED -->
 
                     <View
+                        android:id="@+id/tint_shade_5"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#C41430"
@@ -569,6 +576,7 @@
                         android:tag="#FFC41430" />
 
                     <View
+                        android:id="@+id/tint_shade_6"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#FF0000"
@@ -577,6 +585,7 @@
                         android:tag="#FFFF0000" />
 
                     <View
+                        android:id="@+id/tint_shade_7"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#FF3300"
@@ -585,6 +594,7 @@
                         android:tag="#FFFF3300" />
 
                     <View
+                        android:id="@+id/tint_shade_8"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#AD343A"
@@ -593,6 +603,7 @@
                         android:tag="#FFAD343A" />
 
                     <View
+                        android:id="@+id/tint_shade_9"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#7B2A26"
@@ -601,6 +612,7 @@
                         android:tag="#FF7B2A26" />
 
                     <View
+                        android:id="@+id/tint_shade_10"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#9B162F"
@@ -611,6 +623,7 @@
                     <!-- PURPLE -->
 
                     <View
+                        android:id="@+id/tint_shade_11"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#FF29E8"
@@ -619,6 +632,7 @@
                         android:tag="#FFFF29E8" />
 
                     <View
+                        android:id="@+id/tint_shade_12"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#862B73"
@@ -629,6 +643,7 @@
                     <!-- BLUE -->
 
                     <View
+                        android:id="@+id/tint_shade_13"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#01A6A8"
@@ -637,6 +652,7 @@
                         android:tag="#FF01A6A8" />
 
                     <View
+                        android:id="@+id/tint_shade_14"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#147C87"
@@ -645,6 +661,7 @@
                         android:tag="#FF147C87" />
 
                     <View
+                        android:id="@+id/tint_shade_15"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#3C4056"
@@ -653,6 +670,7 @@
                         android:tag="#FF3C4056" />
 
                     <View
+                        android:id="@+id/tint_shade_16"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#0120C1"
@@ -663,6 +681,7 @@
                     <!-- OTHER -->
 
                     <View
+                        android:id="@+id/tint_shade_17"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#F3C538"
@@ -671,6 +690,7 @@
                         android:tag="#FFF3C538" />
 
                     <View
+                        android:id="@+id/tint_shade_18"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#0A1D19"
@@ -679,6 +699,7 @@
                         android:tag="#FF0A1D19" />
 
                     <View
+                        android:id="@+id/tint_shade_19"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#F27B35"
@@ -687,6 +708,7 @@
                         android:tag="#FFF27B35" />
 
                     <View
+                        android:id="@+id/tint_shade_20"
                         android:layout_width="70dp"
                         android:layout_height="70dp"
                         android:background="#F2B885"
@@ -720,6 +742,7 @@
                     android:orientation="horizontal" >
 
                     <RelativeLayout
+                        android:id="@+id/boost"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -751,6 +774,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/brightness"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -782,6 +806,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/cdepth"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -813,6 +838,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/cbalance"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -844,6 +870,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/contrast"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -875,6 +902,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/emboss"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -906,6 +934,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/flip"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -937,6 +966,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/gamma"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -968,6 +998,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/gaussian"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -999,6 +1030,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/grayscale"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1030,6 +1062,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/hue"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1061,6 +1094,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/invert"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1092,6 +1126,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/noise"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1123,6 +1158,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/saturation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1154,6 +1190,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/sepia"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1185,6 +1222,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/sharpen"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1216,6 +1254,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/sketch"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1247,6 +1286,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/tint"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginRight="5dp"
@@ -1278,6 +1318,7 @@
                     </RelativeLayout>
 
                     <RelativeLayout
+                        android:id="@+id/vignette"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"

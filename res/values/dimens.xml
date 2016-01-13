@@ -26,5 +26,6 @@
     <dimen name="feed_item_border_width">1dp</dimen>
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
+    <dimen name="labels_text_size">14sp</dimen>
 
 </resources>
