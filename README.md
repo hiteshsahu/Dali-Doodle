@@ -21,13 +21,13 @@ This package structe of this Project is done like an art box :-
   * Text.
   * Shapes -Eclipse,Circle,Rectangle,Line
   * Free hand drawing
+  * Change paint color on go
+  * Change paint size on go
+  * Redo and Undo changes
  
 Note to user:- This project is in beta phase ,feel free to share your wisdom.  
 Note to self :- //TODOs
 
-  * Change paint color on go
-  * Change paint size on go
-  * Redo and Undo changes
   * Select and  Draw over images
   * Color filters
   * Convolution Matrix
