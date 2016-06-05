@@ -3,6 +3,8 @@ A powerful Drawing library for Android named after famous artist [Salvador Dalí
 
 ![Alt text](https://github.com/hiteshsahu/Dali-PaintBox/blob/master/intro.jpg "Intro Screen")
 
+![Alt text](https://travis-ci.org/hiteshsahu/Dali-PaintBox.svg "Intro Screen") 
+
 This package structe of this Project is done like an art box :-
 * Canvas :- hold android canvases and play the role of drawing
  Item surface
