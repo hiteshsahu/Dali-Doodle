@@ -1,0 +1,268 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/rl_song_control_overview"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/black"
+    android:gravity="center"
+    android:orientation="vertical" >
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@android:color/darker_gray" />
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/iv_current_paint_mode"
+        android:orientation="horizontal"
+        android:weightSum="6" >
+
+        <com.serveroverload.dali.ui.customeview.TextAwesome
+            android:id="@+id/current_paint_mode"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fa_pencil"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <com.serveroverload.dali.ui.customeview.TextAwesome
+            android:id="@+id/btn_undo"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fa_reply"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <com.serveroverload.dali.ui.customeview.TextAwesome
+            android:id="@+id/btn_clear"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fa_recycle"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <com.serveroverload.dali.ui.customeview.TextAwesome
+            android:id="@+id/btn_redo"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fa_mail_forward"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+
+        <com.serveroverload.dali.ui.customeview.TextAwesome
+            android:id="@+id/btn_color"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fa_flask"
+            android:textColor="@color/red_app_theme"
+            android:textSize="28sp" />
+
+        <com.serveroverload.dali.ui.customeview.TextAwesome
+            android:id="@+id/btn_crop"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/fa_crop"
+            android:textColor="@color/white"
+            android:textSize="28sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <TextView
+            android:id="@+id/paint_size"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:text="Width"
+            android:textColor="@color/white" />
+
+        <SeekBar
+            android:id="@+id/progress_paint_size"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_toLeftOf="@+id/size_value"
+            android:layout_toRightOf="@+id/paint_size"
+            android:layout_weight="1"
+            android:max="500" />
+
+        <TextView
+            android:id="@+id/size_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:text="0/1000"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="5dp"
+        android:orientation="horizontal"
+        android:weightSum="3" >
+
+        <TextView
+            android:id="@+id/paint_opacity"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_weight="1"
+            android:text="Alpha"
+            android:textColor="@color/white" />
+
+        <SeekBar
+            android:id="@+id/progress_paint_opacity"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="1dp"
+            android:layout_marginLeft="3dp"
+            android:layout_marginRight="3dp"
+            android:layout_toLeftOf="@+id/opacity_value"
+            android:layout_toRightOf="@+id/paint_opacity"
+            android:layout_weight="1"
+            android:progress="255"
+            android:max="255" />
+
+        <TextView
+            android:id="@+id/opacity_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="right"
+            android:layout_weight="1"
+            android:text="255/255"
+            android:textColor="@color/white" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/linearLayoutPlayerSlider"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/ic_launcher"
+        android:gravity="center"
+        android:orientation="vertical" >
+
+        <include
+            android:id="@+id/controls"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_above="@+id/slider_controls"
+            android:layout_alignParentBottom="true"
+            layout="@layout/paint_controls" />
+
+        <LinearLayout
+            android:id="@+id/slider_controls"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_gravity="bottom"
+            android:layout_marginTop="5dp"
+            android:background="@color/orange"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:visibility="gone" >
+
+            <Button
+                android:id="@+id/btnRepeatSlider"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_launcher" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/btnBackSlider"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_launcher" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:background="@android:color/darker_gray" />
+
+            <Button
+                android:id="@+id/btnPauseSlider"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_launcher"
+                android:visibility="gone" />
+
+            <Button
+                android:id="@+id/btnPlaySlider"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_launcher" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:background="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnNextSlider"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_launcher" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="32dp"
+                android:background="@android:color/white" />
+
+            <Button
+                android:id="@+id/btnSuffleSlider"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:layout_margin="10dp"
+                android:background="@drawable/ic_launcher" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</LinearLayout>
