@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="library-2.1.2">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.wang.avi/library/2.1.2/jars/classes.jar!/" />
+      <root url="file://$PROJECT_DIR$/app/build/intermediates/exploded-aar/com.wang.avi/library/2.1.2/res" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.wang.avi/library/2.1.2/da337c832b336d9da33031c54a5f90148a3b0a26/library-2.1.2-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

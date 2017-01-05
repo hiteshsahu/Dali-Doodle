@@ -4,9 +4,9 @@
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray"
     android:orientation="vertical"
-    tools:context="com.express.EditActivity" >
+     >
 
-    <com.serveroverload.dali.ui.customeview.SlidingUpPanelLayout
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout
         xmlns:sothree="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
@@ -27,6 +27,6 @@
             android:layout_height="match_parent"
             android:layout_alignParentBottom="true"
             layout="@layout/slider_controls" />
-    </com.serveroverload.dali.ui.customeview.SlidingUpPanelLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 </LinearLayout>

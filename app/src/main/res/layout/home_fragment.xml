@@ -1,16 +1,15 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:fab="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:fab="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#E0E0E0"
-    android:orientation="vertical" >
+    android:orientation="vertical">
 
     <android.support.v4.widget.SwipeRefreshLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:id="@+id/swipe_container"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+        android:layout_height="wrap_content">
 
         <com.serveroverload.dali.ui.customeview.JazzyGridView
             android:id="@+id/listView_products"
@@ -44,7 +43,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/slide_down"
-        android:visibility="visible" >
+        android:visibility="visible">
 
         <LinearLayout
             android:id="@+id/top_icon_detail"
@@ -52,7 +51,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <ImageView
                 android:layout_width="wrap_content"
@@ -128,7 +127,7 @@
         fab:menu_labels_hideAnimation="@anim/jump_to_down"
         fab:menu_labels_showAnimation="@anim/jump_from_down"
         fab:menu_labels_style="@style/MenuLabelsStyle"
-        fab:menu_shadowColor="#444" >
+        fab:menu_shadowColor="#444">
 
         <com.github.clans.fab.FloatingActionButton
             android:id="@+id/add_new_doodle"
@@ -155,14 +154,14 @@
             fab:fab_label="Pick" />
     </com.github.clans.fab.FloatingActionMenu>
 
-    <com.serveroverload.dali.ui.customeview.AVLoadingIndicatorView
+    <com.wang.avi.AVLoadingIndicatorView
         android:id="@+id/loading_bar"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_centerInParent="true"
         android:layout_gravity="center"
-        app:indicator="CubeTransition"
         android:visibility="invisible"
-        app:indicator_color="#F53700" />
+        app:indicatorName="BallPulseIndicator"
+        />
 
 </FrameLayout>

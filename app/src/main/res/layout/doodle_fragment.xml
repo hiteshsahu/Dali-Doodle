@@ -1,19 +1,17 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:sothree="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@android:color/darker_gray"
-    android:orientation="vertical"
-    tools:context="com.express.EditActivity" >
+    android:orientation="vertical">
 
-    <com.serveroverload.dali.ui.customeview.SlidingUpPanelLayout
-        xmlns:sothree="http://schemas.android.com/apk/res-auto"
+    <com.sothree.slidinguppanel.SlidingUpPanelLayout xmlns:sothree="http://schemas.android.com/apk/res-auto"
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:gravity="bottom"
         sothree:umanoPanelHeight="100dp"
-        sothree:umanoShadowHeight="4dp" >
+        sothree:umanoShadowHeight="4dp">
 
         <com.serveroverload.dali.canvas.CanvasDrawElements
             android:id="@+id/doodle_container"
@@ -27,7 +25,7 @@
             android:layout_height="match_parent"
             android:background="@color/black"
             android:gravity="center"
-            android:orientation="vertical" >
+            android:orientation="vertical">
 
             <View
                 android:layout_width="match_parent"
@@ -39,7 +37,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_horizontal"
-                android:orientation="horizontal" >
+                android:orientation="horizontal">
 
                 <ImageView
                     android:id="@+id/iv_current_paint_mode"
@@ -51,7 +49,7 @@
                 <LinearLayout
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical" >
+                    android:orientation="vertical">
 
                     <TextView
                         android:id="@+id/textNowPlaying"
@@ -70,7 +68,7 @@
                         android:layout_width="fill_parent"
                         android:layout_height="wrap_content"
                         android:gravity="center_horizontal"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <com.serveroverload.dali.ui.customeview.TextAwesome
                             android:id="@+id/btn_undo"
@@ -133,7 +131,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="10dp"
                         android:layout_marginRight="10dp"
-                        android:orientation="horizontal" >
+                        android:orientation="horizontal">
 
                         <TextView
                             android:id="@+id/textBufferDuration"
@@ -142,15 +140,15 @@
                             android:layout_weight="1"
                             android:text="0"
                             android:textColor="@color/white" />
-                        
-                         <SeekBar
-                        android:id="@+id/progress_paint_size"
-                        style="?android:attr/progressBarStyleHorizontal"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="1dp"
-                        android:layout_marginLeft="10dp"
-                        android:layout_marginRight="10dp" />
+
+                        <SeekBar
+                            android:id="@+id/progress_paint_size"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="fill_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="1dp"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp" />
 
                         <TextView
                             android:id="@+id/textDuration"
@@ -161,7 +159,7 @@
                             android:textColor="@color/white" />
                     </LinearLayout>
 
-                   
+
                 </LinearLayout>
             </LinearLayout>
 
@@ -171,7 +169,7 @@
                 android:layout_height="match_parent"
                 android:background="@drawable/ic_launcher"
                 android:gravity="center"
-                android:orientation="vertical" >
+                android:orientation="vertical">
 
                 <!--
                      <android.support.v4.view.ViewPager
@@ -185,11 +183,11 @@
 
                 <include
                     android:id="@+id/controls"
+                    layout="@layout/paint_controls"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_above="@+id/slider_controls"
-                    android:layout_alignParentBottom="true"
-                    layout="@layout/paint_controls" />
+                    android:layout_alignParentBottom="true" />
 
                 <LinearLayout
                     android:id="@+id/slider_controls"
@@ -201,7 +199,7 @@
                     android:background="@color/orange"
                     android:gravity="center"
                     android:orientation="horizontal"
-                    android:visibility="gone" >
+                    android:visibility="gone">
 
                     <Button
                         android:id="@+id/btnRepeatSlider"
@@ -268,6 +266,6 @@
                 </LinearLayout>
             </RelativeLayout>
         </LinearLayout>
-    </com.serveroverload.dali.ui.customeview.SlidingUpPanelLayout>
+    </com.sothree.slidinguppanel.SlidingUpPanelLayout>
 
 </LinearLayout>

@@ -1,19 +1,3 @@
-<!--
-  Copyright 2011 The Android Open Source Project
-
-  Licensed under the Apache License, Version 2.0 (the "License");
-  you may not use this file except in compliance with the License.
-  You may obtain a copy of the License at
-
-      http://www.apache.org/licenses/LICENSE-2.0
-
-  Unless required by applicable law or agreed to in writing, software
-  distributed under the License is distributed on an "AS IS" BASIS,
-  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-  See the License for the specific language governing permissions and
-  limitations under the License.
--->
-
 <resources>
 
     <declare-styleable name="FoldingMenu">
@@ -59,24 +43,6 @@
         </attr>
     </declare-styleable>
     
-    <declare-styleable name="SlidingUpPanelLayout">
-        <attr name="umanoPanelHeight" format="dimension" />
-        <attr name="umanoShadowHeight" format="dimension" />
-        <attr name="umanoParalaxOffset" format="dimension" />
-        <attr name="umanoFadeColor" format="color" />
-        <attr name="umanoFlingVelocity" format="integer" />
-        <attr name="umanoDragView" format="reference" />
-        <attr name="umanoScrollableView" format="reference" />
-        <attr name="umanoOverlay" format="boolean" />
-        <attr name="umanoClipPanel" format="boolean" />
-        <attr name="umanoAnchorPoint" format="float" />
-        <attr name="umanoInitialState" format="enum">
-            <enum name="expanded" value="0" />
-            <enum name="collapsed" value="1" />
-            <enum name="anchored" value="2" />
-            <enum name="hidden" value="3" />
-        </attr>
-    </declare-styleable>
     <declare-styleable name="MultiViewPager">
 
         <!-- Child view inside a page to match the page size against. -->
@@ -142,39 +108,6 @@
         <attr name="fletPaddingBottom" format="reference|dimension" />
         <attr name="fletBackground" format="reference|color" />
     </declare-styleable>
-    <declare-styleable name="AVLoadingIndicatorView">
-        <attr name="indicator">
-            <flag name="BallPulse" value="0" />
-            <flag name="BallGridPulse" value="1" />
-            <flag name="BallClipRotate" value="2" />
-            <flag name="BallClipRotatePulse" value="3" />
-            <flag name="SquareSpin" value="4" />
-            <flag name="BallClipRotateMultiple" value="5" />
-            <flag name="BallPulseRise" value="6" />
-            <flag name="BallRotate" value="7" />
-            <flag name="CubeTransition" value="8" />
-            <flag name="BallZigZag" value="9" />
-            <flag name="BallZigZagDeflect" value="10" />
-            <flag name="BallTrianglePath" value="11" />
-            <flag name="BallScale" value="12" />
-            <flag name="LineScale" value="13" />
-            <flag name="LineScaleParty" value="14" />
-            <flag name="BallScaleMultiple" value="15" />
-            <flag name="BallPulseSync" value="16" />
-            <flag name="BallBeat" value="17" />
-            <flag name="LineScalePulseOut" value="18" />
-            <flag name="LineScalePulseOutRapid" value="19" />
-            <flag name="BallScaleRipple" value="20" />
-            <flag name="BallScaleRippleMultiple" value="21" />
-            <flag name="BallSpinFadeLoader" value="22" />
-            <flag name="LineSpinFadeLoader" value="23" />
-            <flag name="TriangleSkewSpin" value="24" />
-            <flag name="Pacman" value="25" />
-            <flag name="BallGridBeat" value="26" />
-            <flag name="SemiCircleSpin" value="27" />
-        </attr>
-        <attr name="indicator_color" format="color" />
-    </declare-styleable>
 
     <!-- Circular ImageView Attributes -->
     <declare-styleable name="CircleImageView">
@@ -184,62 +117,6 @@
         <attr name="civ_fill_color" format="color" />
     </declare-styleable>
     
-    
-<!--     <declare-styleable name="FloatingActionButton_old">
-        <attr name="fab_colorPressed" format="color" />
-        <attr name="fab_colorNormal" format="color" />
-        <attr name="fab_colorRipple" format="color" />
-        <attr name="fab_colorDisabled" format="color" />
-        <attr name="fab_shadow" format="boolean" />
-        <attr name="fab_type" format="enum">
-            <enum name="normal" value="0" />
-            <enum name="mini" value="1" />
-        </attr>
-    </declare-styleable> -->
-
-    <!--
-    FAB menu Attributes 
-     <declare-styleable name="FloatingActionButton">
-        <attr name="fab_colorPressed" format="color"/>
-        <attr name="fab_colorDisabled" format="color"/>
-        <attr name="fab_colorNormal" format="color"/>
-        <attr name="fab_icon" format="reference"/>
-        <attr name="fab_size" format="enum">
-            <enum name="normal" value="0"/>
-            <enum name="mini" value="1"/>
-        </attr>
-        <attr name="fab_title" format="string"/>
-        <attr name="fab_stroke_visible" format="boolean"/>
-    </declare-styleable>
-    
-     
-    <declare-styleable name="AddFloatingActionButton">
-        <attr name="fab_plusIconColor" format="color"/>
-    </declare-styleable>
-    
-    
-    <declare-styleable name="FloatingActionsMenu">
-        <attr name="fab_addButtonColorPressed" format="color"/>
-        <attr name="fab_addButtonColorNormal" format="color"/>
-        <attr name="fab_addButtonSize" format="enum">
-            <enum name="normal" value="0"/>
-            <enum name="mini" value="1"/>
-        </attr>
-        <attr name="fab_addButtonPlusIconColor" format="color"/>
-        <attr name="fab_addButtonStrokeVisible" format="boolean"/>
-        <attr name="fab_labelStyle" format="reference"/>
-        <attr name="fab_labelsPosition" format="enum">
-            <enum name="left" value="0"/>
-            <enum name="right" value="1"/>
-        </attr>
-        <attr name="fab_expandDirection" format="enum">
-            <enum name="up" value="0"/>
-            <enum name="down" value="1"/>
-            <enum name="left" value="2"/>
-            <enum name="right" value="3"/>
-        </attr>
-    </declare-styleable>
-    -->
 
     <declare-styleable name="FloatingActionButton">
         <attr name="fab_colorNormal" format="color" />
